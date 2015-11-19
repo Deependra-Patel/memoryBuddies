@@ -4,7 +4,7 @@ from time import sleep
 import socket
 
 HashFileName = "hash.bin"
-SleepSeconds = 10
+SleepSeconds = 120
 HOST = 'localhost'
 PORT = 9876
 ADDR = (HOST,PORT)
@@ -12,7 +12,6 @@ BUFSIZE = 4096
 
 while True:
 	call(["make", "daemon"])	
-	sleep(10)
 	hashFile = open(HashFileName,'rb')
 
 	client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
