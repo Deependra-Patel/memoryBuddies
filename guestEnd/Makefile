@@ -5,6 +5,7 @@ all:
 
 clean:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+	rm hash.bin
 run:
 	make all
 	sudo insmod hash.ko
