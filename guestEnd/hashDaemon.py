@@ -3,10 +3,13 @@ from subprocess import call
 from time import sleep
 import socket
 
-HashFileName = "hash.bin"
+#Set these
 SleepSeconds = 120
 HOST = 'localhost'
 PORT = 9876
+######
+
+HashFileName = "hash.bin"
 ADDR = (HOST,PORT)
 BUFSIZE = 4096
 

@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 
-from analyse import share_potential
 from analyse import final_usage
 from analyse import intervm_sharing
-
+##########Input
 file_name = ["../memTraces/Trace3/VM1.txt0",
 			 "../memTraces/kernelBuild/VM1.txt1",
 			 "../memTraces/Trace3/VM1.txt2",
@@ -11,21 +10,18 @@ file_name = ["../memTraces/Trace3/VM1.txt0",
 			 "../memTraces/Trace4/VM1.txt0"]
 
 vm_size = [1024, 2048, 1024, 2048, 1024]
-
+binsize = [3072, 3072, 3072]
 initial_map = [0,0,1,1,2]
+###########Input ends
 
-n = 5;
+n = len(vm_size);
+
 share = [[0 for x in range(n)] for x in range(n)];
 for i in range(n):
 	for j in range(i+1,n):
 		share[i][j] = intervm_sharing(file_name[i], file_name[j]);
 
-bins_no = 3;
-binsize = [0 for x in range(bins_no)];
-
-binsize[0] = 3010;
-binsize[1] = 3010;
-binsize[2] = 3010;
+bins_no = len(binsize);
 
 maxi = 0;
 max_posx = 0;
@@ -131,7 +127,7 @@ for i in range(bins_no):
 			str_set = str_set + [file_name[j]];
 	temp = final_usage(str_set)
 	final_mem = final_mem + temp;
-	print('Memory usage on physical machine #',i," is ",temp,"MB")
+	print('Memory usage after colocation on physical machine #',i," is ",temp,"MB")
 
 print('Initial usage was',initial_mem,"MB");
 print('After colocation memory usage was',final_mem,"MB");
